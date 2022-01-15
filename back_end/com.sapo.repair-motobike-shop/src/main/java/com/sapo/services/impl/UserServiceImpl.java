@@ -87,19 +87,12 @@ public class UserServiceImpl implements UserService {
         InputValidate.validateUsername(userDTO.getUsername(), userDAO.findAllUserExist());
         user.setCode(Common.GenerateCodeStaff());
         List<Role> roles = new ArrayList<>();
-        for (int i =0; i<userDTO.getRoleId().size() ; i++ ){
-            Role role = roleDao.findRoleById(userDTO.getRoleId().get(i));
-            roles.add(role);
-        }
         user.setRoles(roles);
         user.setEmail(userDTO.getEmail());
         user.setPhone(userDTO.getPhone());
-        user.setName(userDTO.getName());
         user.setPassword(Common.GeneratePassword(userDTO.getPassword()));
         user.setPassword(userDTO.getPassword());
         user.setUsername(userDTO.getUsername());
-        user.setAddress(userDTO.getAddress());
-        user.setSex(userDTO.getSex());
         user.setStatus(ConstantVariableCommon.STATUS_USER_1);
         user.setCreatedAt();
         saveUserRepository(user);

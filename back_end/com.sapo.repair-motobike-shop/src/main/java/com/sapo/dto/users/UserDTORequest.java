@@ -12,17 +12,13 @@ public class UserDTORequest{
 
     @NotNull(message = "Tên đăng nhập không được để trống")
     @NotBlank(message = "Tên đăng nhập không được để trống")
+    @Size(min = 6, max= 30, message = "Độ dài Username phải nằm trong khoảng 6 đến 30 ký tự")
     private String username;
 
     @NotNull(message = "Mật khẩu không được để trống")
     @NotBlank(message = "Mật khẩu không được để trống")
+    @Size(min = 6, max= 10, message = "Độ dài Password phải nằm trong khoảng 6 đến 10 ký tự")
     private String password;
-
-    @NotNull(message = "Tên không được để trống")
-    @NotBlank(message = "Tên không được để trống")
-    private String name;
-
-    private String address;
 
     private String email;
 
@@ -30,12 +26,6 @@ public class UserDTORequest{
     @NotBlank(message = "Số điện thoại không được để trống")
     @Size(min = 10, max = 10, message = "Số điện thoại phải có 10 chữ số")
     private String phone;
-
-    @NotNull(message = "Vui lòng chọn giới tính")
-    private boolean sex;
-
-    @NotNull(message = "Role được để trống")
-    private List<Integer> roleId;
 
     public String getUsername() {
         return username;
@@ -53,22 +43,6 @@ public class UserDTORequest{
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -83,21 +57,5 @@ public class UserDTORequest{
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public boolean getSex() {
-        return sex;
-    }
-
-    public void setSex(boolean sex) {
-        this.sex = sex;
-    }
-
-    public List<Integer> getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(List<Integer> roleId) {
-        this.roleId = roleId;
     }
 }

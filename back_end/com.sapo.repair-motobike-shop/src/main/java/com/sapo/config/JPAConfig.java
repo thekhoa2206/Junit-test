@@ -24,7 +24,7 @@ public class JPAConfig {
         dataSourceConfig.setJdbcUrl("jdbc:mysql://localhost:3306/repair_shop?useUnicode=yes&characterEncoding=UTF-8");
 //        dataSourceConfig.setJdbcUrl("jdbc:mysql://localhost:3306/bike2");
         dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("root");
+        dataSourceConfig.setPassword("123456789");
 //        dataSourceConfig.setPassword("1111");
 
 //        dataSourceConfig.setPassword("123456");

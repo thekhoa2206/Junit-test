@@ -36,6 +36,7 @@ public class LoginController {
         System.out.println("username: " +loginRequest.getUsername() + "password: " + loginRequest.getPassword());
         LoginValidate.loginNotNull(loginRequest);
         LoginValidate.loginNotSpecialCharacters(loginRequest);
+        LoginValidate.loginInvalid(loginRequest);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -42,6 +42,9 @@ public class InputValidate {
     
     // Hàm validate username
     public static String validateUsername(String username, List<User> users){
+        if(username.length() <3 || username.length() >30){
+            throw new InputException("Độ dài Username phải nằm trong khoảng 3 đến 30 ký tự");
+        }
         getSpecialCharacterCount(username);
         boolean checkUsername = checkUsernameExist(username, users);
         if (checkUsername == true) {

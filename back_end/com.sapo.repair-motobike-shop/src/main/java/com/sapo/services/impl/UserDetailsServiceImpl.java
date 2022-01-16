@@ -3,6 +3,7 @@ package com.sapo.services.impl;
 import com.sapo.dto.sercurity.UserPrinciple;
 import com.sapo.entities.User;
 import com.sapo.repositories.UserRepository;
+import com.sapo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

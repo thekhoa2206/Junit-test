@@ -2,7 +2,9 @@ package com.itvuw17.userTest;
 
 import com.sapo.StartWebApplication;
 import com.sapo.controllers.LoginController;
+import com.sapo.controllers.admin.AdminUserController;
 import com.sapo.dto.sercurity.LoginForm;
+import com.sapo.dto.users.UserDTORequest;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +13,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 
 import javax.security.auth.login.LoginException;
+import java.io.IOException;
 
 //Các test case đăng nhập
 @SpringBootTest
@@ -28,9 +31,18 @@ public class LoginTest {
         login.setUsername("admin");
         login.setPassword("admin");
         loginController.authenticateUser(login);
+        System.out.println(loginController.authenticateUser(login).getBody().toString());
     }
 
-
+    //Test đăng nhập bằng sai username và password
+    @Test(expected = Exception.class)
+    public void testLoginWithUsernamePasswordWrong() throws LoginException {
+        LoginController loginController = applicationContext.getBean(LoginController.class);
+        LoginForm login = new LoginForm();
+        login.setUsername("admin");
+        login.setPassword("admin12");
+        loginController.authenticateUser(login);
+    }
     //Test login với các ký tự đặc biệt ở username
     @Test(expected = LoginException.class)
     public void testLoginWithUsernameHasSpecialCharacters() throws LoginException {
@@ -40,6 +52,7 @@ public class LoginTest {
         login.setUsername("Adm>?:");
         login.setPassword("admin");
         loginController.authenticateUser(login);
+        System.out.println(loginController.authenticateUser(login));
     }
 
     //Test login với các ký tự đặc biệt ở password
@@ -51,6 +64,7 @@ public class LoginTest {
         login.setUsername("admin");
         login.setPassword("Adm>?:");
         loginController.authenticateUser(login);
+        System.out.println(loginController.authenticateUser(login).getStatusCode());
     }
 
     //Test login với username null
@@ -106,12 +120,23 @@ public class LoginTest {
 
     //Test login với password ngắn hơn so với độ dài cho phép
     @Test(expected = LoginException.class)
-    public void testLoginWithPassworđInvalid2() throws LoginException {
+    public void testLoginWithPasswordInvalid2() throws LoginException {
         LoginController loginController = applicationContext.getBean(LoginController.class);
         LoginForm login = new LoginForm();
         login.setUsername("admin");
-        login.setPassword("admi");
+        login.setPassword("adm");
         loginController.authenticateUser(login);
     }
+
+    //Test login bằng tấn công injection sql
+    @Test(expected = LoginException.class)
+    public void testLoginWithInjectionSql() throws LoginException {
+        LoginController loginController = applicationContext.getBean(LoginController.class);
+        LoginForm login = new LoginForm();
+        login.setUsername("john' OR 1=1; --");
+        login.setPassword("123456");
+        loginController.authenticateUser(login);
+    }
+
 
 }

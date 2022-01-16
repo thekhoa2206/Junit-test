@@ -6,6 +6,7 @@ import com.sapo.entities.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.security.auth.login.LoginException;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
@@ -56,4 +57,5 @@ public interface UserService {
 
     //validate
     void loginUser(LoginForm loginForm);
+
 }

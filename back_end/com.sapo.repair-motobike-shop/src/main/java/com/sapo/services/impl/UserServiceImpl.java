@@ -21,14 +21,17 @@ import com.sapo.validate.InputValidate;
 import com.sapo.validate.LoginValidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.security.auth.login.LoginException;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -273,4 +276,6 @@ public class UserServiceImpl implements UserService {
     public void loginUser(LoginForm loginForm){
 
     }
+
+
 }

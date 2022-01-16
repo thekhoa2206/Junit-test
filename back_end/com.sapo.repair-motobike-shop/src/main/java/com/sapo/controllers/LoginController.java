@@ -33,7 +33,6 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) throws LoginException {
-        System.out.println("username: " +loginRequest.getUsername() + "password: " + loginRequest.getPassword());
         LoginValidate.loginNotNull(loginRequest);
         LoginValidate.loginNotSpecialCharacters(loginRequest);
         LoginValidate.loginInvalid(loginRequest);

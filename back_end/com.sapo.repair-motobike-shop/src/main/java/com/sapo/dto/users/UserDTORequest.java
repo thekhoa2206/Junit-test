@@ -12,12 +12,12 @@ public class UserDTORequest{
 
     @NotNull(message = "Tên đăng nhập không được để trống")
     @NotBlank(message = "Tên đăng nhập không được để trống")
-    @Size(min = 6, max= 30, message = "Độ dài Username phải nằm trong khoảng 6 đến 30 ký tự")
+    @Size(min = 3, max= 30, message = "Độ dài Username phải nằm trong khoảng 3 đến 30 ký tự")
     private String username;
 
     @NotNull(message = "Mật khẩu không được để trống")
     @NotBlank(message = "Mật khẩu không được để trống")
-    @Size(min = 6, max= 10, message = "Độ dài Password phải nằm trong khoảng 6 đến 10 ký tự")
+    @Size(min = 4, max= 10, message = "Độ dài Password phải nằm trong khoảng 6 đến 10 ký tự")
     private String password;
 
     private String email;
